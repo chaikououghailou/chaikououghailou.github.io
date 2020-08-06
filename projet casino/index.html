@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roulette</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+	
+  <header>
+  
+  
+  <div>
+    <h1>Casino Virtuel</h1>
+    <h2>Jeux de la roulette</h2>
+    <h3>Tente ta chance et devient Millionaire♦♥</h3>
+  </div>
+  
+  
+  
+  </header>
+  <section>
+    
+      
+  <div class="diaporama"></div>
+  </section>
+  <main>
+      <h1>Roulette</h1>
+<body>
+  <main>
+    <div>
+      Numéro:
+      <select name="" id="select">
+        <option value="pair">pair</option>
+        <option value="impair">impair</option>
+        <option value="impair">1</option>
+        <option value="pair">2</option>
+        <option value="impair">3</option>
+        <option value="pair">4</option>
+        <option value="impair">5</option>
+        <option value="pair">6</option>
+        <option value="impair">7</option>
+        <option value="pair">8</option>
+        <option value="impair">9</option>
+        <option value="pair">10</option>
+        <option value="impair">11</option>
+        <option value="pair">12</option>
+        <option value="impair">13</option>
+        <option value="pair">14</option>
+        <option value="impair">15</option>
+        <option value="pair">16</option>
+        <option value="impair">17</option>
+        <option value="pair">18</option>
+        <option value="impair">19</option>
+        <option value="pair">20</option>
+        <option value="impair">21</option>
+        <option value="pair">22</option>
+        <option value="impair">23</option>
+        <option value="pair">24</option>
+        <option value="impair">25</option>
+        <option value="pair">26</option>
+        <option value="impair">27</option>
+        <option value="pair">28</option>
+        <option value="impair">29</option>
+        <option value="pair">30</option>
+        <option value="impair">31</option>
+        <option value="pair">32</option>
+        <option value="impair">33</option>
+        <option value="pair">34</option>
+        <option value="impair">35</option>
+        <option value="pair">36</option>
+      </select>
+      Mise:
+      <input type="number" name="" id="numero">
+      <button onclick="jeu();">Go</button>
+      <div id="msg"></div>
+      <div id="montant">
+        <div>Joueur: <span class="argent">100 mille FCFA</span></div>
+        <div>Casino: <span class="argent">0</span></div>
+      </div>
+    </div>
+  </main>
+  <script>
+    let montantJoueur = 100, montantOrdinateur = 0, mise, gain, nombreAleatoire;
+
+    function jeu() {
+      const select = document.getElementById('select');
+      const msg = document.getElementById('msg');
+      const numero = document.getElementById('numero');
+      const argent = document.getElementsByClassName('argent');
+      const number = document.getElementById('number');
+
+      mise = parseInt(numero.value);
+      if (mise > 0) {
+        nombreAleatoire = Math.floor(Math.random() * Math.floor(11));
+        if (nombreAleatoire === 0) {
+          montantJoueur -= mise;
+          montantOrdinateur += mise
+          msg.textContent = nombreAleatoire + " Perdu"
+        } else if (nombreAleatoire == select[select.selectedIndex].text) {
+          gain = mise * 36;
+          montantJoueur += gain
+          msg.textContent = nombreAleatoire + " Gagné"
+        } else if (nombreAleatoire % 2 === 0 && select.value === 'pair') {
+          gain = mise * 2;
+          montantJoueur += gain
+          msg.textContent = nombreAleatoire + " Gagné"
+        } else if (nombreAleatoire % 2 != 0 && select.value === 'impair') {
+          gain = mise * 2;
+          montantJoueur += gain
+          msg.textContent = nombreAleatoire + " Gagné"
+        } else {
+          montantJoueur -= mise;
+          montantOrdinateur += mise;
+          msg.textContent = nombreAleatoire + " Perdu"
+        }
+        argent[0].textContent = montantJoueur + " mille FCFA"
+        if (montantOrdinateur != 0) argent[1].textContent = montantOrdinateur + " mille FCFA"
+      }
+    }
+  </script>
+</body>
+
+</html>
